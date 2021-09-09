@@ -4,11 +4,13 @@
 
 本项目采用
 
-1. [Ant Design](https://ant.design/index-cn): Ant Design ，UI 组件 、
-2. [Ant Design Pro V5](https://beta-pro.ant.design/index-cn/): Ant Design Pro 、
-3. [Ant Design Pro Components](https://procomponents.ant.design): Ant Design Pro 封装的高级组件
-4. [umi](https://pro.ant.design): 打包工具以及提供一些插件（状态管理、请求、等等）
-5. [ahooks](https://ahooks.js.org): hooks 解决方案
+1. [Ant Design](https://ant.design/index-cn) - Ant Design UI 组件
+2. [Ant Design Pro V5](https://beta-pro.ant.design/index-cn/) - Ant Design Pro
+3. [Ant Design Pro Components](https://procomponents.ant.design) - Ant Design Pro 封装的高级组件
+4. [umi](https://pro.ant.design) - 打包工具以及提供一些插件（状态管理、请求、等等）
+5. [ahooks](https://ahooks.js.org)、 [react-use](https://github.com/streamich/react-use) - Hooks 解决方案
+6. [data management](https://www.yuque.com/mingzibaliao/web/gvmvfd) - 更多Hooks
+
 
 ### 开始使用
 
@@ -45,6 +47,5 @@ npm run lint
 npm run lint:fix
 ```
 
-### todo：
-
-1. 页面缓存 https://my.oschina.net/xiaohuoni/blog/4433778
+### Todo：
+1. [页面缓存](https://my.oschina.net/xiaohuoni/blog/4433778)
