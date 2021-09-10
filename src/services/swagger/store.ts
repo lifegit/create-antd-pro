@@ -28,10 +28,10 @@ export async function getOrderById(
   },
   options?: { [key: string]: any },
 ) {
-  const { orderId: param0 } = params;
+  const { orderId: param0, ...queryParams } = params;
   return request<API.Order>(`/store/order/${param0}`, {
     method: 'GET',
-    params: { ...params },
+    params: { ...queryParams },
     ...(options || {}),
   });
 }
@@ -45,10 +45,10 @@ export async function deleteOrder(
   },
   options?: { [key: string]: any },
 ) {
-  const { orderId: param0 } = params;
+  const { orderId: param0, ...queryParams } = params;
   return request<any>(`/store/order/${param0}`, {
     method: 'DELETE',
-    params: { ...params },
+    params: { ...queryParams },
     ...(options || {}),
   });
 }
