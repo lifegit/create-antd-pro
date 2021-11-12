@@ -1,4 +1,4 @@
-import {get,set} from "local-storage";
+import { get, set } from 'local-storage';
 
 export class BaseStorage<T> {
   private readonly key: string;
@@ -8,7 +8,7 @@ export class BaseStorage<T> {
   }
 
   public Set(val: T) {
-    set(this.key, val)
+    set(this.key, val);
   }
   public Get(): T {
     return get<T>(this.key);

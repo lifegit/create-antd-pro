@@ -6,15 +6,18 @@ import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
-import React from "react";
-import {notification} from "antd";
-import {Token} from "@/utils/account";
-import {RequestConfig, UseRequestProvider} from "@@/plugin-request/request";
+import React from 'react';
+import { notification } from 'antd';
+import { Token } from '@/utils/account';
+import { RequestConfig, UseRequestProvider } from '@@/plugin-request/request';
 import type { RequestOptionsInit, ResponseError } from 'umi-request';
-import dayjs from "dayjs";
-import 'dayjs/locale/zh-cn'
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import isMoment from 'dayjs/esm/plugin/isMoment';
 
-dayjs.locale('zh-cn')
+dayjs.locale('zh-cn');
+// fix: https://github.com/ant-design/antd-dayjs-webpack-plugin/issues/66
+dayjs.extend(isMoment as any);
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -35,17 +38,17 @@ export async function getInitialState(): Promise<{
   if (history.location.pathname === loginPath) {
     return {
       settings: {},
-    }
+    };
   }
 
-  return  Promise.allSettled([
-    queryCurrentUser().catch(()=> history.push(loginPath) )
-  ]).then((res: any) => {
-    return {
-      currentUser: res[0]?.value,
-      settings: {},
-    };
-  })
+  return Promise.allSettled([queryCurrentUser().catch(() => history.push(loginPath))]).then(
+    (res: any) => {
+      return {
+        currentUser: res[0]?.value,
+        settings: {},
+      };
+    },
+  );
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
@@ -82,7 +85,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     ...initialState?.settings,
   };
 };
-
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
