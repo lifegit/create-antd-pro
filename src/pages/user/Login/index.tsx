@@ -11,7 +11,8 @@ import React, { useState } from 'react';
 import ProForm, { ProFormCaptcha, ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
 import { Link, history, useModel } from 'umi';
 import Footer from '@/components/Footer';
-import { currentUser, login } from '@/services/ant-design-pro/api';
+import { currentUser } from '@/services/ant-design-pro/api';
+import { login } from '@/services/ant-design-pro/login';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import styles from './index.less';
 import { Token } from '@/utils/account';
@@ -33,7 +34,7 @@ const Login: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
-  const { initialState, setInitialState } = useModel('@@initialState');
+  const { setInitialState } = useModel('@@initialState');
 
   const handleSubmit = async (values: API.LoginParams) => {
     setSubmitting(true);
@@ -46,14 +47,14 @@ const Login: React.FC = () => {
         }
 
         message.success('登录成功！');
-        Token.Set(`${res?.token_type} ${res?.token}`);
+        Token.Set('token'); // ${res?.token_type} ${res?.token}
       })
       .then(() => {
         return Promise.all([
           currentUser(), // 获取用户信息
         ]).then(async (result) => {
           const [account] = result;
-          await setInitialState((s) => ({ ...s, currentUser: account.data }));
+          await setInitialState((s) => ({ ...s, currentUser: account }));
         });
       })
       .then(() => {

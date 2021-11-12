@@ -69,10 +69,10 @@ export async function getUserByName(
   },
   options?: { [key: string]: any },
 ) {
-  const { username: param0 } = params;
+  const { username: param0, ...queryParams } = params;
   return request<API.User>(`/user/${param0}`, {
     method: 'GET',
-    params: { ...params },
+    params: { ...queryParams },
     ...(options || {}),
   });
 }
@@ -87,10 +87,10 @@ export async function updateUser(
   body: API.User,
   options?: { [key: string]: any },
 ) {
-  const { username: param0 } = params;
+  const { username: param0, ...queryParams } = params;
   return request<any>(`/user/${param0}`, {
     method: 'PUT',
-    params: { ...params },
+    params: { ...queryParams },
     data: body,
     ...(options || {}),
   });
@@ -105,10 +105,10 @@ export async function deleteUser(
   },
   options?: { [key: string]: any },
 ) {
-  const { username: param0 } = params;
+  const { username: param0, ...queryParams } = params;
   return request<any>(`/user/${param0}`, {
     method: 'DELETE',
-    params: { ...params },
+    params: { ...queryParams },
     ...(options || {}),
   });
 }
