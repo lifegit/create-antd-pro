@@ -6,7 +6,12 @@ import proxy from './proxy';
 import routes from './routes';
 import webpackPlugin from './plugin';
 const { REACT_APP_ENV } = process.env;
+
 export default defineConfig({
+  // 编译时将manifest.json拷贝到dist
+  copy: [`/src/pwa/manifest.json`],
+  // 在 index.html 的 header 中加载 manifest.json,开启pwa服务
+  links: [{ rel: 'manifest', href: `/manifest.json` }],
   hash: true,
   antd: {},
   dva: {

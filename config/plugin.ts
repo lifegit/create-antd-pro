@@ -1,8 +1,20 @@
+const { InjectManifest } = require('workbox-webpack-plugin');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 export default (config: any) => {
   // 替换 moment => dayjs
   config.plugin('antd-dayjs-webpack-plugin').use(AntdDayjsWebpackPlugin).end();
+
+  // pwa - service-worker
+  if (process.env.NODE_ENV === 'production') {
+    config.plugin('workbox').use(InjectManifest, [
+      {
+        swSrc: '/src/pwa/service-worker.js',
+        swDest: 'sw.js',
+        exclude: [/\.map$/, /favicon\.ico$/, /^manifest.*\.js?$/],
+      },
+    ]);
+  }
 
   // 打包优化 uglifyjs-webpack-plugin 配置
   if (process.env.NODE_ENV === 'production') {

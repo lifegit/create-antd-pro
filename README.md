@@ -1,4 +1,4 @@
-# Ant Design Pro  脚手架
+# Ant Design Pro 脚手架
 
 ### 介绍
 
@@ -9,8 +9,9 @@
 3. [Ant Design Pro Components](https://procomponents.ant.design) - Ant Design Pro 封装的高级组件
 4. [umi](https://pro.ant.design) - 打包工具以及提供一些插件（状态管理、请求、等等）
 5. [ahooks](https://ahooks.js.org)、 [react-use](https://github.com/streamich/react-use) - Hooks 解决方案
-6. [data management](https://www.yuque.com/mingzibaliao/web/gvmvfd) - 更多Hooks
+6. [data management](https://www.yuque.com/mingzibaliao/web/gvmvfd) - 更多 Hooks
 
+及集成 [PWA](https://github.com/lifegit/antd-pro-use-pwa)
 
 ### 开始使用
 
@@ -46,6 +47,3 @@ npm run lint
 ```bash
 npm run lint:fix
 ```
-
-### Todo：
-1. [页面缓存](https://my.oschina.net/xiaohuoni/blog/4433778)
